@@ -255,7 +255,7 @@ display_tags: ["formatting", "images", "links", "math", "code"] # this tags will
 # -----------------------------------------------------------------------------
 
 scholar:
-  last_name: []
+  last_name: [2BS]
   first_name: [NAO]
 
   style: apa
