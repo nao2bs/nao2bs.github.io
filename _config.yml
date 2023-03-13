@@ -143,7 +143,7 @@ giscus:
   theme: preferred_color_scheme # name of the color scheme (preferred works well with al-folio light/dark mode)
   emit_metadata: 0
   lang: ja
-  #crossorigin: anonymous
+  crossorigin: anonymous
 
 # Disqus comments (DEPRECATED)
 disqus_shortname: # put your disqus shortname
@@ -153,8 +153,8 @@ disqus_shortname: # put your disqus shortname
 # If you have blog posts published on medium.com or other exteranl sources,
 # you can display them in your blog by adding a link to the RSS feed.
 external_sources:
-  - name: #medium.com
-    rss_url:
+  #  - name: medium.com
+  # rss_url:
 
 # -----------------------------------------------------------------------------
 # Collections
@@ -259,7 +259,7 @@ scholar:
   first_name: [NAO]
 
   style: apa
-  locale: ja
+  locale: en
 
   source: /_bibliography/
   bibliography: papers.bib
