@@ -2,4 +2,5 @@ github_users:
   - nao2bs
 
 github_repos:
-  # - alshedivat/al-folio
+  - nao2bs/share
+  - nao2bs/quick-rails7-app
