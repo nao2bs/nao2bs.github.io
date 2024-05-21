@@ -17,4 +17,4 @@ social: false # includes social icons at the bottom of the page
 
 プログラミング、英語学習をしています。
 このサイトは学習を日々行っていて得た気づきなどをアウトプットする
-ブログ兼ポートフォリオです。
+ブログ兼ポートフォリオです。間違いにお気づきの際は各種SNSよりお知らせください。
