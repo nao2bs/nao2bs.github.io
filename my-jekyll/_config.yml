@@ -1,0 +1,28 @@
+language: ja
+timezone: Asia/Tokyo
+
+title: My Jekyll
+description: >
+  My Description. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+baseurl: ""
+url: "http://e-joint.jp"
+
+author:
+  name: e-JOINT.jp
+  email: mail@example.com
+  github: ejointjp
+  twitter: ejointjp
+
+paginate: 5
+paginate_path: page:num
+
+sass:
+  style: expanded
+
+excerpt_separator: "<!--more-->"
+
+# safe: false
+
+plugins:
+  - jekyll-paginate
+  - jekyll-feed
