@@ -1,17 +1,17 @@
 language: ja
 timezone: Asia/Tokyo
 
-title: My Jekyll
+title: nao2bs.net
 description: >
-  My Description. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+  プログラミング関係のメモを書くブログです。
 baseurl: ""
-url: "http://e-joint.jp"
+url: "https://nao2bs.net"
 
 author:
-  name: e-JOINT.jp
-  email: mail@example.com
-  github: ejointjp
-  twitter: ejointjp
+  name: NAO
+  email: nao2bs@gmail.com
+  github: nao2bs
+  twitter: nao2bs
 
 paginate: 5
 paginate_path: page:num

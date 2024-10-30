@@ -11,7 +11,7 @@
                 "jekyll serve --host 0.0.0.0 --watch"
             ],
             "console": "integratedTerminal",
-            "cwd": "${workspaceFolder}/my-jekyll"
+            "cwd": "${workspaceFolder}/docs"
         }
     ]
 }
