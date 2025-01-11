@@ -17,7 +17,12 @@ paginate: 5
 paginate_path: page:num
 
 sass:
-  style: expanded
+  style: compressed
+  # style: expanded
+
+exclude:
+  - node_modules
+  - vendor
 
 excerpt_separator: "<!--more-->"
 
@@ -26,3 +31,9 @@ excerpt_separator: "<!--more-->"
 plugins:
   - jekyll-paginate
   - jekyll-feed
+  - jekyll-admin
+
+jekyll_admin:
+  basic_auth:
+    username: "admin" # Set your desired username
+    password: "password" # Set your desired password
