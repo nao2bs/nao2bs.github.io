@@ -1,0 +1,76 @@
+/* Custom styles for Markdown/post content */
+.post-content {
+  max-width: 68ch;
+  margin: 0 auto;
+  line-height: 1.8;
+  color: #374151; /* gray-700 */
+  font-size: 1rem;
+}
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4 {
+  color: #0f172a; /* gray-900 */
+  margin-top: 1.25rem;
+  margin-bottom: 0.6rem;
+}
+.post-content p {
+  margin-bottom: 1rem;
+}
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0.75rem 0;
+  border-radius: 0.5rem;
+}
+.post-content pre {
+  background: #0f172a;
+  color: #f8fafc;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow: auto;
+}
+.post-content code {
+  background: #f3f4f6;
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.25rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace;
+}
+
+/* Ensure Rouge/Minima code blocks (figure.highlight) are styled */
+.post-content figure.highlight,
+.post-content .highlight {
+  margin: 0 0 1rem 0;
+}
+.post-content figure.highlight pre,
+.post-content .highlight pre {
+  background: #0f172a;
+  color: #f8fafc;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow: auto;
+}
+.post-content figure.highlight code,
+.post-content .highlight code {
+  background: transparent;
+  color: inherit;
+}
+
+/* Ensure fenced code blocks (<pre><code>) don't get a light background that hides the dark pre background */
+.post-content pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+.post-content blockquote {
+  border-left: 4px solid #e5e7eb;
+  padding-left: 1rem;
+  color: #6b7280;
+  margin: 1rem 0;
+}
+.post-content ul,
+.post-content ol {
+  margin-left: 1.25rem;
+  margin-bottom: 1rem;
+}

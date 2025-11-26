@@ -22,17 +22,13 @@
             }
         }
     </script>
-    <!-- Custom Markdown/post styles -->
-    <link rel="stylesheet" href="{{ '/assets/custom.css' | relative_url }}">
 </head>
 
 <body class="bg-gray-50 text-gray-800 antialiased">
     {% include header.html %}
 
     <main class="max-w-6xl mx-auto px-4 py-12">
-        <div class="post-content">
-            {{ content }}
-        </div>
+        {{ content }}
     </main>
 
     {% include footer.html %}

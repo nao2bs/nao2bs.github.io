@@ -2,39 +2,17 @@
 layout: default
 ---
 
-<div class="contents page">
-  <div class="container">
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
-    <div class="page__header">
-      <h1 class="page__title">{{ page.title }}</h1>
-      <p class="page__date">{{ page.date | date: '%B %d, %Y' }}</p>
-    </div>
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">{{ page.title }}</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%Y年%m月%d日" }}</time>
+    </p>
+  </header>
 
-    
-    <div class="page__body">
+  <div class="post-content e-content" itemprop="articleBody">
+    {{ content }}
+  </div>
 
-
-      {{ content }}
-
-
-    </div><!--page__body-->
-
-    <!-- 前後のページへのリンクを表示したい -->
-    <div class="pager">
-
-      {% if page.next %}
-        <p class="pager__item--next">
-          <a href="{{ page.next.url | relative_url }}">&lt; {{ page.next.title }}</a>
-        </p>
-      {% endif %}
-
-      {% if page.previous %}
-        <p class="pager__item--prev">
-          <a href="{{ page.previous.url | relative_url }}">{{ page.previous.title }} &gt;</a>
-        </p>
-      {% endif %}
-
-    </div><!--pager-->
-    
-  </div><!--container-->
-</div><!--page-->
+</article>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tailwind で始めるモダンなサイト作成 — nao2bs</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <header class="bg-white shadow">
+    <div class="max-w-3xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="/blog/" class="font-semibold">← Blog</a>
+      <h1 class="text-lg font-bold">Post</h1>
+      <div></div>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-4 py-8">
+    <article class="bg-white p-6 rounded-lg shadow">
+      <h1 class="text-2xl font-extrabold">Tailwind で始めるモダンなサイト作成</h1>
+      <div class="mt-2 text-sm text-gray-500">2025-11-22 · 5 min read</div>
+
+      <p class="mt-4 text-gray-700">この投稿では Tailwind CSS を使って素早くプロトタイプを作る方法を紹介します。まずは CDN を使って HTML に組み込み、コンポーネントを作っていく手順から...</p>
+
+      <h2 class="mt-6 font-semibold">1. CDN で素早く始める</h2>
+      <p class="mt-2 text-gray-700">開発初期は CDN を使うと楽です。規模が大きくなったら PostCSS / PurgeCSS を使ったビルドに移行しましょう。</p>
+
+      <h2 class="mt-6 font-semibold">2. コンポーネント化のコツ</h2>
+      <p class="mt-2 text-gray-700">共通のスタイルはクラスでまとめ、ユーティリティを活用して冗長さを避けます。</p>
+
+      <p class="mt-6 text-sm text-gray-500">— nao2bs</p>
+    </article>
+  </main>
+
+  <footer class="max-w-3xl mx-auto px-4 py-6 text-sm text-gray-400">
+    © 2025 nao2bs
+  </footer>
+</body>
+</html>
