@@ -36,6 +36,12 @@ plugins:
 # Include posts with future dates (useful when posts have timestamps later in the day)
 future: true
 
+# Collections
+collections:
+  portfolio:
+    output: true
+    permalink: /portfolio/:path/
+
 exclude:  ['about', 'about.md']
 # Exclude from processing.
 # The following items will not be processed, by default.

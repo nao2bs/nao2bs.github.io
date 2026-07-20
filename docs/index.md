@@ -76,29 +76,23 @@ layout: home
     </div>
 
     <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for item in site.portfolio limit:3 %}
         <div class="bg-white rounded-lg shadow overflow-hidden">
-            <div class="h-40 bg-gray-200 flex items-center justify-center text-gray-400">Project Image</div>
+            {% if item.image %}
+            <div class="h-40 bg-gray-200 flex items-center justify-center text-gray-400"><img src="{{ item.image | relative_url }}" alt="{{ item.title }}" class="w-full h-full object-cover"></div>
+            {% else %}
+            <div class="h-40 bg-gradient-to-br from-primary/20 to-accent/10 flex items-center justify-center text-gray-400">No Image</div>
+            {% endif %}
             <div class="p-4">
-                <div class="font-semibold">Project A</div>
-                <div class="text-sm text-gray-600 mt-2">静的サイト、Tailwind、Github Pages にデプロイ。</div>
+                <a href="{{ item.url | relative_url }}" class="font-semibold hover:text-primary">{{ item.title }}</a>
+                {% if item.description %}
+                <div class="text-sm text-gray-600 mt-2">{{ item.description }}</div>
+                {% elsif item.excerpt %}
+                <div class="text-sm text-gray-600 mt-2">{{ item.excerpt | strip_html | truncatewords: 15 }}</div>
+                {% endif %}
             </div>
         </div>
-
-        <div class="bg-white rounded-lg shadow overflow-hidden">
-            <div class="h-40 bg-gray-200 flex items-center justify-center text-gray-400">Project Image</div>
-            <div class="p-4">
-                <div class="font-semibold">Project B</div>
-                <div class="text-sm text-gray-600 mt-2">React アプリ、認証と API 連携。</div>
-            </div>
-        </div>
-
-        <div class="bg-white rounded-lg shadow overflow-hidden">
-            <div class="h-40 bg-gray-200 flex items-center justify-center text-gray-400">Project Image</div>
-            <div class="p-4">
-                <div class="font-semibold">Project C</div>
-                <div class="text-sm text-gray-600 mt-2">小規模チームでの開発と CI/CD 設定。</div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </section>
 
