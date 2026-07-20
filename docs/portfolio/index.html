@@ -59,7 +59,10 @@
   </main>
 
   <footer class="max-w-6xl mx-auto px-4 py-6 text-sm text-gray-400">
-    © 2025 nao2bs
+    © <span id="current-year"></span> nao2bs
   </footer>
+  <script>
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

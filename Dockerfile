@@ -22,13 +22,14 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
   apt-get install -y nodejs
 
 # 作業ディレクトリを作成
-WORKDIR /usr/src/app
+WORKDIR /usr/src/app/docs
 
 # Gemfile をコピー
-# COPY Gemfile Gemfile.lock ./
+COPY docs/Gemfile docs/Gemfile.lock ./
+
 
 # Bundler を使って Ruby の依存関係をインストール
-# RUN bundle install
+RUN bundle install
 
 # Jekyll をグローバルにインストール
 RUN gem install bundler jekyll
