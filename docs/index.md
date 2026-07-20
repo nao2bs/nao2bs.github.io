@@ -8,8 +8,8 @@ layout: home
 <!-- Hero -->
 <section class="grid md:grid-cols-2 gap-8 items-center">
     <div>
-        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">AIとコードでアイデアを形にする<br /><span
-                class="text-primary">nao2bs</span></h1>
+        <h2 class="text-3xl md:text-4xl font-extrabold leading-tight">AIとコードでアイデアを形にする<br /><span
+                class="text-primary">nao2bs</span></h2>
         <p class="mt-4 text-lg text-gray-600">ブログでは学びを、ポートフォリオでは実績を。Tailwind CSS を使ったシンプルな UI モックです。</p>
         <div class="mt-6 flex flex-wrap gap-3">
             <a href="/blog/"
