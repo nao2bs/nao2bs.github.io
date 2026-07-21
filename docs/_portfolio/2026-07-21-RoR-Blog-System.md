@@ -7,19 +7,16 @@ categories: [Ruby]
 ---
 
 # 💻 【Ruby on Railsブログシステム】
-GitHub pagesを活用し、手軽に更新や閲覧ができることを重要視しました。 
+簡単操作のブログシステム✍ 
 
 ## 📝 概要
-リモートワークにおけるチーム内のタスク漏れを防止するための、Webベースのタスク管理アプリケーションです。個人開発として、設計からデプロイまでを1人で行いました。
+このサイトを公開する前に自作したブログシステムです。Rails8対応したいです。
 
 
 ## 🛠 使用技術
 フロントエンド: HTML / CSS / Tailwind CSS
-バックエンド: Ruby
-データベース: 特になし
-インフラ・デプロイ: GitHub Pages 
-その他: GitHub Actions (CI/CD)
-機能面での参考にしたテンプレート: https://github.com/jeffreytse/jekyll-theme-yat
+バックエンド: Ruby / Ruby on Rails
+データベース: SQLite3 / Postgresql
 
 ## ✨ 技術的な工夫
 
