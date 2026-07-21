@@ -1,0 +1,24 @@
+<div id="click-to-top" role="button" aria-label="Scroll to top" class="fixed flex items-center justify-center w-9 h-9 rounded-full right-5 bottom-12 bg-white cursor-pointer opacity-0 translate-y-2 shadow-[0_2px_15px_rgba(0,0,0,0.15)] text-base select-none transition-all duration-300 ease-in-out lg:w-12 lg:h-12 lg:right-9 lg:text-xl xl:w-16 xl:h-16 xl:right-16 xl:text-2xl data-[theme=dark]:bg-slate-800">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+</div>
+<script>
+  (function () {
+    const clickToTop = document.getElementById('click-to-top');
+
+    function updateVisibility() {
+      if (window.scrollY > 100) {
+        clickToTop.classList.add('opacity-100', 'translate-y-0');
+      } else {
+        clickToTop.classList.remove('opacity-100', 'translate-y-0');
+      }
+    }
+
+    window.addEventListener('scroll', updateVisibility);
+    updateVisibility();
+
+    clickToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  })();
+</script>

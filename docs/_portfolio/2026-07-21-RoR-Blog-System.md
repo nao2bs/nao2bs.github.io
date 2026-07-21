@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "ブログ＆ポートフォリオサイト"
+title: "Ruby on Railsブログシステム"
 date: 2026-07-21
 description: ""
-categories: [React, TypeScript]
+categories: [Ruby]
 ---
 
-# 💻 【ブログ＆ポートフォリオサイト】
+# 💻 【Ruby on Railsブログシステム】
 GitHub pagesを活用し、手軽に更新や閲覧ができることを重要視しました。 
 
 ## 📝 概要
