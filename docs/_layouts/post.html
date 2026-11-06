@@ -2,113 +2,252 @@
 layout: default
 ---
 
-  <div class="max-w-4xl mx-auto">
-    <!-- Back to blog link -->
-    <div class="mb-6">
-      <a href="{{ '/blog/' | relative_url }}"
-        class="inline-flex items-center text-sm font-medium text-gray-500 hover:text-primary transition-colors">
-        <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+<div class="max-w-4xl mx-auto">
+  <!-- Back to blog link -->
+  <div class="mb-6">
+    <a href="{{ '/blog/' | relative_url }}"
+      class="inline-flex items-center text-sm font-medium text-gray-500 hover:text-primary transition-colors">
+      <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+      </svg>
+      ブログ一覧に戻る
+    </a>
+  </div>
+
+  <!-- Article Card -->
+  <article class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-10 md:p-12 h-entry" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    <header class="post-header pb-6 border-b border-gray-100 mb-8">
+      <!-- Categories / Tags -->
+      {% if page.categories and page.categories.size > 0 %}
+      <div class="flex flex-wrap gap-2 mb-4">
+        {% for category in page.categories %}
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">
+          #{{ category }}
+        </span>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <!-- Post Title -->
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight leading-tight p-name"
+        itemprop="name headline">
+        {{ page.title }}
+      </h1>
+
+      <!-- Meta Info -->
+      <div class="mt-4 flex flex-wrap items-center gap-4 text-xs sm:text-sm text-gray-500">
+        <div class="flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+            {{ page.date | date: "%Y年%m月%d日" }}
+          </time>
+        </div>
+
+        {% assign words = content | number_of_words %}
+        {% assign read_time = words | divided_by: 300 | at_least: 1 %}
+        <div class="flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span>読了目安: 約{{ read_time }}分</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Table of Contents Container (Generated via JS if headings exist) -->
+    <div id="toc-container" class="hidden mb-10 p-5 bg-gray-50/80 rounded-xl border border-gray-100">
+      <div class="flex items-center justify-between cursor-pointer select-none" id="toc-toggle">
+        <div class="flex items-center gap-2 text-sm font-bold text-gray-800">
+          <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+          </svg>
+          <span>目次</span>
+        </div>
+        <button type="button" aria-label="目次の開閉" class="text-xs text-gray-400 hover:text-gray-600 transition-colors">
+          <span id="toc-toggle-text">閉じる</span>
+        </button>
+      </div>
+      <nav id="toc-list" class="mt-3 text-sm space-y-1.5"></nav>
+    </div>
+
+    <!-- Post Content -->
+    <div id="article-body" class="post-content e-content" itemprop="articleBody">
+      {{ content }}
+    </div>
+
+    <!-- Author Mini Profile -->
+    <div class="mt-12 pt-8 border-t border-gray-100 flex items-center gap-4 bg-gray-50/70 p-5 rounded-xl">
+      <div
+        class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
+        N
+      </div>
+      <div>
+        <div class="text-sm font-bold text-gray-900">{{ site.author | default: "nao2bs" }}</div>
+        <div class="text-xs text-gray-500 mt-0.5">技術の学びや開発記録を発信しています。</div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Prev / Next Post Navigation -->
+  <div class="mt-8 grid sm:grid-cols-2 gap-4">
+    {% if page.previous.url %}
+    <a href="{{ page.previous.url | relative_url }}"
+      class="group block p-4 bg-white rounded-xl shadow-sm border border-gray-100 hover:border-primary/50 transition-all">
+      <div class="text-xs text-gray-400 mb-1 flex items-center gap-1 group-hover:text-primary">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
         </svg>
-        ブログ一覧に戻る
-      </a>
-    </div>
-
-    <!-- Article Card -->
-    <article class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-10 md:p-12 h-entry" itemscope
-      itemtype="http://schema.org/BlogPosting">
-      <header class="post-header pb-6 border-b border-gray-100 mb-8">
-        <!-- Categories / Tags -->
-        {% if page.categories and page.categories.size > 0 %}
-        <div class="flex flex-wrap gap-2 mb-4">
-          {% for category in page.categories %}
-          <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">
-            #{{ category }}
-          </span>
-          {% endfor %}
-        </div>
-        {% endif %}
-
-          <!-- Post Title -->
-          <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight leading-tight p-name"
-            itemprop="name headline">
-            {{ page.title }}
-          </h1>
-
-          <!-- Meta Info -->
-          <div class="mt-4 flex flex-wrap items-center gap-4 text-xs sm:text-sm text-gray-500">
-            <div class="flex items-center gap-1.5">
-              <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-              <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-                {{ page.date | date: "%Y年%m月%d日" }}
-              </time>
-            </div>
-
-            {% assign words = content | number_of_words %}
-            {% assign read_time = words | divided_by: 300 | at_least: 1 %}
-            <div class="flex items-center gap-1.5">
-              <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span>読了目安: 約{{ read_time }}分</span>
-            </div>
-          </div>
-      </header>
-
-      <!-- Post Content -->
-      <div class="post-content e-content" itemprop="articleBody">
-        {{ content }}
+        前の記事
       </div>
-
-      <!-- Author Mini Profile -->
-      <div class="mt-12 pt-8 border-t border-gray-100 flex items-center gap-4 bg-gray-50/70 p-5 rounded-xl">
-        <div
-          class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
-          N
-        </div>
-        <div>
-          <div class="text-sm font-bold text-gray-900">{{ site.author | default: "nao2bs" }}</div>
-          <div class="text-xs text-gray-500 mt-0.5">技術の学びや開発記録を発信しています。</div>
-        </div>
+      <div class="text-sm font-semibold text-gray-800 line-clamp-1 group-hover:text-primary">
+        {{ page.previous.title }}
       </div>
-    </article>
+    </a>
+    {% else %}
+    <div></div>
+    {% endif %}
 
-    <!-- Prev / Next Post Navigation -->
-    <div class="mt-8 grid sm:grid-cols-2 gap-4">
-      {% if page.previous.url %}
-      <a href="{{ page.previous.url | relative_url }}"
-        class="group block p-4 bg-white rounded-xl shadow-sm border border-gray-100 hover:border-primary/50 transition-all">
-        <div class="text-xs text-gray-400 mb-1 flex items-center gap-1 group-hover:text-primary">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-          </svg>
-          前の記事
-        </div>
-        <div class="text-sm font-semibold text-gray-800 line-clamp-1 group-hover:text-primary">
-          {{ page.previous.title }}
-        </div>
-      </a>
-      {% else %}
-      <div></div>
-      {% endif %}
-
-      {% if page.next.url %}
-      <a href="{{ page.next.url | relative_url }}"
-        class="group block p-4 bg-white rounded-xl shadow-sm border border-gray-100 hover:border-primary/50 transition-all text-right">
-        <div class="text-xs text-gray-400 mb-1 flex items-center justify-end gap-1 group-hover:text-primary">
-          次の記事
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </div>
-        <div class="text-sm font-semibold text-gray-800 line-clamp-1 group-hover:text-primary">
-          {{ page.next.title }}
-        </div>
-      </a>
-      {% endif %}
-    </div>
+    {% if page.next.url %}
+    <a href="{{ page.next.url | relative_url }}"
+      class="group block p-4 bg-white rounded-xl shadow-sm border border-gray-100 hover:border-primary/50 transition-all text-right">
+      <div class="text-xs text-gray-400 mb-1 flex items-center justify-end gap-1 group-hover:text-primary">
+        次の記事
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </div>
+      <div class="text-sm font-semibold text-gray-800 line-clamp-1 group-hover:text-primary">
+        {{ page.next.title }}
+      </div>
+    </a>
+    {% endif %}
+  </div>
 </div>
+
+<!-- Table of Contents Script -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const article = document.getElementById('article-body');
+    const tocContainer = document.getElementById('toc-container');
+    const tocList = document.getElementById('toc-list');
+    const tocToggle = document.getElementById('toc-toggle');
+    const tocToggleText = document.getElementById('toc-toggle-text');
+
+    if (!article || !tocContainer || !tocList) return;
+
+    // Collect h2, h3, h4 headings
+    const headings = article.querySelectorAll('h2, h3, h4');
+    if (headings.length === 0) return;
+
+    // Build TOC items
+    headings.forEach((heading, index) => {
+      // Ensure heading has an ID
+      if (!heading.id) {
+        heading.id = 'heading-' + index;
+      }
+
+      const level = heading.tagName.toLowerCase();
+      const item = document.createElement('div');
+
+      let paddingClass = 'pl-0 font-medium text-gray-700';
+      if (level === 'h3') {
+        paddingClass = 'pl-4 text-gray-600 text-[0.875rem]';
+      } else if (level === 'h4') {
+        paddingClass = 'pl-8 text-gray-500 text-[0.825rem]';
+      }
+
+      item.className = `${paddingClass} transition-colors leading-relaxed`;
+
+      const link = document.createElement('a');
+      link.href = '#' + heading.id;
+      link.textContent = heading.textContent;
+      link.className = 'hover:text-primary transition-colors block';
+
+      item.appendChild(link);
+      tocList.appendChild(item);
+    });
+
+    // Show container
+    tocContainer.classList.remove('hidden');
+
+    // Toggle collapse/expand
+    let isOpen = true;
+    tocToggle.addEventListener('click', () => {
+      isOpen = !isOpen;
+      if (isOpen) {
+        tocList.classList.remove('hidden');
+        tocToggleText.textContent = '閉じる';
+      } else {
+        tocList.classList.add('hidden');
+        tocToggleText.textContent = '開く';
+      }
+    });
+  });
+</script>
+
+
+<!-- Table of Contents Script -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const article = document.getElementById('article-body');
+    const tocContainer = document.getElementById('toc-container');
+    const tocList = document.getElementById('toc-list');
+    const tocToggle = document.getElementById('toc-toggle');
+    const tocToggleText = document.getElementById('toc-toggle-text');
+
+    if (!article || !tocContainer || !tocList) return;
+
+    // Collect h2, h3, h4 headings
+    const headings = article.querySelectorAll('h2, h3, h4');
+    if (headings.length === 0) return;
+
+    // Build TOC items
+    headings.forEach((heading, index) => {
+      // Ensure heading has an ID
+      if (!heading.id) {
+        heading.id = 'heading-' + index;
+      }
+
+      const level = heading.tagName.toLowerCase();
+      const item = document.createElement('div');
+
+      let paddingClass = 'pl-0 font-medium text-gray-700';
+      if (level === 'h3') {
+        paddingClass = 'pl-4 text-gray-600 text-[0.875rem]';
+      } else if (level === 'h4') {
+        paddingClass = 'pl-8 text-gray-500 text-[0.825rem]';
+      }
+
+      item.className = `${paddingClass} transition-colors leading-relaxed`;
+
+      const link = document.createElement('a');
+      link.href = '#' + heading.id;
+      link.textContent = heading.textContent;
+      link.className = 'hover:text-primary transition-colors block';
+
+      item.appendChild(link);
+      tocList.appendChild(item);
+    });
+
+    // Show container
+    tocContainer.classList.remove('hidden');
+
+    // Toggle collapse/expand
+    let isOpen = true;
+    tocToggle.addEventListener('click', () => {
+      isOpen = !isOpen;
+      if (isOpen) {
+        tocList.classList.remove('hidden');
+        tocToggleText.textContent = '閉じる';
+      } else {
+        tocList.classList.add('hidden');
+        tocToggleText.textContent = '開く';
+      }
+    });
+  });
+</script>
