@@ -47,14 +47,20 @@ layout: default
           </time>
         </div>
 
-        {% assign words = content | number_of_words %}
-        {% assign read_time = words | divided_by: 300 | at_least: 1 %}
+        {% assign raw_content = content | strip_html | strip_newlines %}
+        {% assign char_count = raw_content | size %}
+        {% assign word_count = content | number_of_words %}
+        {% if char_count > 0 %}
+        {% assign reading_minutes = char_count | divided_by: 500 | at_least: 1 %}
+        {% else %}
+        {% assign reading_minutes = word_count | divided_by: 200 | at_least: 1 %}
+        {% endif %}
         <div class="flex items-center gap-1.5">
           <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-          <span>読了目安: 約{{ read_time }}分</span>
+          <span>読了目安: 約{{ reading_minutes }}分（約{{ char_count }}文字）</span>
         </div>
       </div>
     </header>
@@ -128,68 +134,6 @@ layout: default
     {% endif %}
   </div>
 </div>
-
-<!-- Table of Contents Script -->
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const article = document.getElementById('article-body');
-    const tocContainer = document.getElementById('toc-container');
-    const tocList = document.getElementById('toc-list');
-    const tocToggle = document.getElementById('toc-toggle');
-    const tocToggleText = document.getElementById('toc-toggle-text');
-
-    if (!article || !tocContainer || !tocList) return;
-
-    // Collect h2, h3, h4 headings
-    const headings = article.querySelectorAll('h2, h3, h4');
-    if (headings.length === 0) return;
-
-    // Build TOC items
-    headings.forEach((heading, index) => {
-      // Ensure heading has an ID
-      if (!heading.id) {
-        heading.id = 'heading-' + index;
-      }
-
-      const level = heading.tagName.toLowerCase();
-      const item = document.createElement('div');
-
-      let paddingClass = 'pl-0 font-medium text-gray-700';
-      if (level === 'h3') {
-        paddingClass = 'pl-4 text-gray-600 text-[0.875rem]';
-      } else if (level === 'h4') {
-        paddingClass = 'pl-8 text-gray-500 text-[0.825rem]';
-      }
-
-      item.className = `${paddingClass} transition-colors leading-relaxed`;
-
-      const link = document.createElement('a');
-      link.href = '#' + heading.id;
-      link.textContent = heading.textContent;
-      link.className = 'hover:text-primary transition-colors block';
-
-      item.appendChild(link);
-      tocList.appendChild(item);
-    });
-
-    // Show container
-    tocContainer.classList.remove('hidden');
-
-    // Toggle collapse/expand
-    let isOpen = true;
-    tocToggle.addEventListener('click', () => {
-      isOpen = !isOpen;
-      if (isOpen) {
-        tocList.classList.remove('hidden');
-        tocToggleText.textContent = '閉じる';
-      } else {
-        tocList.classList.add('hidden');
-        tocToggleText.textContent = '開く';
-      }
-    });
-  });
-</script>
-
 
 <!-- Table of Contents Script -->
 <script>
