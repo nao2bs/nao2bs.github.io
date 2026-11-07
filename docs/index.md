@@ -25,7 +25,7 @@ layout: home
                 <div class="text-sm font-semibold text-gray-700">Recent Post</div>
                 {% assign latest = site.posts | first %}
                 {% if latest %}
-                <a href="{{ latest.url | relative_url }}" class="mt-2 text-gray-600 block font-semibold hover:underline">{{ latest.title }}</a>
+                <a href="{{ latest.url | relative_url }}" class="mt-2 text-gray-600 block font-semibold hover:text-primary transition-colors">{{ latest.title }}</a>
                 {% if latest.excerpt %}
                 <p class="mt-2 text-sm text-gray-600">{{ latest.excerpt | strip_html | truncate:120 }}</p>
                 {% elsif latest.description %}
@@ -50,13 +50,13 @@ layout: home
 <section class="mt-12">
     <div class="flex items-center justify-between">
         <h2 class="text-2xl font-bold">Latest Posts</h2>
-        <a href="/blog/" class="text-primary hover:underline">すべて見る →</a>
+        <a href="/blog/" class="text-primary hover:opacity-80 transition-opacity">すべて見る →</a>
     </div>
 
     <div class="mt-4 grid md:grid-cols-3 gap-6">
         {% for post in site.posts limit:3 %}
         <article class="bg-white rounded-lg shadow p-5">
-            <a class="text-xl font-semibold hover:underline" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            <a class="text-xl font-semibold hover:text-primary transition-colors" href="{{ post.url | relative_url }}">{{ post.title }}</a>
             {% if post.excerpt %}
             <p class="mt-2 text-sm text-gray-600">{{ post.excerpt | strip_html | truncate:160 }}</p>
             {% elsif post.description %}
@@ -72,7 +72,7 @@ layout: home
 <section class="mt-12">
     <div class="flex items-center justify-between">
         <h2 class="text-2xl font-bold">Portfolio</h2>
-        <a href="/portfolio/" class="text-primary hover:underline">全ての作品 →</a>
+        <a href="/portfolio/" class="text-primary hover:opacity-80 transition-opacity">全ての作品 →</a>
     </div>
 
     <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
