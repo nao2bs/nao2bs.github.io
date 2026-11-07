@@ -17,8 +17,12 @@ permalink: /blog/
 
     <article class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:border-primary/40 transition-all">
       <a class="text-xl font-bold text-gray-900 hover:text-primary transition-colors" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      <div class="mt-2 text-xs sm:text-sm text-gray-400 flex items-center gap-3">
-        <span>{{ post.date | date: "%Y年%m月%d日" }}{% if post.author %} · {{ post.author }}{% endif %}</span>
+      <div class="mt-2 text-xs sm:text-sm text-gray-400 flex flex-wrap items-center gap-3">
+        <span>公開: {{ post.date | date: "%Y年%m月%d日" }}{% if post.author %} · {{ post.author }}{% endif %}</span>
+        {% if post.last_modified_at %}
+        <span>·</span>
+        <span class="text-gray-500">更新: {{ post.last_modified_at | date: "%Y年%m月%d日" }}</span>
+        {% endif %}
         <span>·</span>
         <span class="flex items-center gap-1">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -22,9 +22,9 @@ layout: default
       {% if page.categories and page.categories.size > 0 %}
       <div class="flex flex-wrap gap-2 mb-4">
         {% for category in page.categories %}
-          <a href="{{ '/categories/' | append: category | append: '/' | relative_url }}"
-            class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
-            #{{ category }}
+        <a href="{{ '/categories/' | append: category | append: '/' | relative_url }}"
+          class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
+          #{{ category }}
         </a>
         {% endfor %}
       </div>
@@ -44,9 +44,21 @@ layout: default
               d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
           </svg>
           <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-            {{ page.date | date: "%Y年%m月%d日" }}
+            公開: {{ page.date | date: "%Y年%m月%d日" }}
           </time>
         </div>
+
+        {% if page.last_modified_at %}
+        <div class="flex items-center gap-1.5 text-gray-500">
+          <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+          </svg>
+          <time datetime="{{ page.last_modified_at | date_to_xmlschema }}">
+            更新: {{ page.last_modified_at | date: "%Y年%m月%d日" }}
+          </time>
+        </div>
+        {% endif %}
 
         {% assign raw_content = content | strip_html | strip_newlines %}
         {% assign char_count = raw_content | size %}
