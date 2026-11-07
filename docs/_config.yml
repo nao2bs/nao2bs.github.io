@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: nao2b's Blog
+title: nao2b's Blog & Portfolio
 # email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
   A blog about programming, technology, and other topics of interest.
@@ -30,8 +30,7 @@ author: nao2bs
 
 # Build settings
 theme: minima
-plugins:
-  - jekyll-feed
+plugins: []
 
 # Include posts with future dates (useful when posts have timestamps later in the day)
 future: true
