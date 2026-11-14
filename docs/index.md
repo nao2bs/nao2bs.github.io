@@ -90,6 +90,14 @@ layout: home
                 {% elsif item.excerpt %}
                 <div class="text-sm text-gray-600 mt-2">{{ item.excerpt | strip_html | truncatewords: 15 }}</div>
                 {% endif %}
+                {% assign item_tags = item.tags | default: item.categories %}
+                {% if item_tags and item_tags.size > 0 %}
+                <div class="mt-3 flex flex-wrap gap-1.5">
+                    {% for tag in item_tags %}
+                    <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary">#{{ tag }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
             </div>
         </div>
         {% endfor %}
@@ -97,7 +105,7 @@ layout: home
 </section>
 
 <!-- Contact -->
-<section id="contact" class="mt-12 bg-white rounded-lg p-6 shadow">
+<!--<asection id="contact" class="mt-12 bg-white rounded-lg p-6 shadow">
     <h3 class="text-xl font-semibold">Contact</h3>
     <p class="mt-2 text-gray-600">仕事の依頼・お問い合わせは以下リンクからどうぞ。</p>
     <div class="mt-4 flex flex-wrap gap-3">
@@ -106,3 +114,4 @@ layout: home
             target="_blank">GitHub</a>
     </div>
 </section>
+-->

@@ -3,7 +3,8 @@ layout: post
 title: "ブログ＆ポートフォリオサイト"
 date: 2026-07-21
 description: ""
-categories: [React, TypeScript]
+tags: [Jekyll, Tailwind CSS, GitHub Pages, Ruby]
+categories: [Jekyll, Tailwind CSS]
 ---
 
 # 💻 【ブログ＆ポートフォリオサイト】

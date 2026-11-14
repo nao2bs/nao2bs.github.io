@@ -3,7 +3,8 @@ layout: post
 title: "Ruby on Railsブログシステム"
 date: 2026-07-21
 description: ""
-categories: [Ruby]
+tags: [Ruby, Rails, Tailwind CSS, PostgreSQL]
+categories: [Ruby, Rails]
 ---
 
 # 💻 【Ruby on Railsブログシステム】

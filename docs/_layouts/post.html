@@ -3,8 +3,17 @@ layout: default
 ---
 
 <div class="max-w-4xl mx-auto">
-  <!-- Back to blog link -->
+  <!-- Back to blog / portfolio link -->
   <div class="mb-6">
+    {% if page.collection == 'portfolio' %}
+    <a href="{{ '/portfolio/' | relative_url }}"
+      class="inline-flex items-center text-sm font-medium text-gray-500 hover:text-primary transition-colors">
+      <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+      </svg>
+      ポートフォリオ一覧に戻る
+    </a>
+    {% else %}
     <a href="{{ '/blog/' | relative_url }}"
       class="inline-flex items-center text-sm font-medium text-gray-500 hover:text-primary transition-colors">
       <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -12,6 +21,7 @@ layout: default
       </svg>
       ブログ一覧に戻る
     </a>
+    {% endif %}
   </div>
 
   <!-- Article Card -->
@@ -19,13 +29,20 @@ layout: default
     itemtype="http://schema.org/BlogPosting">
     <header class="post-header pb-6 border-b border-gray-100 mb-8">
       <!-- Categories / Tags -->
-      {% if page.categories and page.categories.size > 0 %}
+      {% assign display_tags = page.tags | default: page.categories %}
+      {% if display_tags and display_tags.size > 0 %}
       <div class="flex flex-wrap gap-2 mb-4">
-        {% for category in page.categories %}
-        <a href="{{ '/categories/' | append: category | append: '/' | relative_url }}"
-          class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
-          #{{ category }}
-        </a>
+        {% for tag in display_tags %}
+          {% if page.collection == 'posts' and page.categories contains tag %}
+          <a href="{{ '/categories/' | append: tag | append: '/' | relative_url }}"
+            class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
+            #{{ tag }}
+          </a>
+          {% else %}
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">
+            #{{ tag }}
+          </span>
+          {% endif %}
         {% endfor %}
       </div>
       {% endif %}
