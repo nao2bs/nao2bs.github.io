@@ -10,7 +10,7 @@ layout: home
     <div>
         <h2 class="text-3xl md:text-4xl font-extrabold leading-tight">AIとコードでアイデアを形にする<br /><span
                 class="text-primary">nao2bs</span></h2>
-        <p class="mt-4 text-lg text-gray-600">ブログでは学びを、ポートフォリオでは実績を。Tailwind CSS を使ったシンプルな UI モックです。</p>
+        <p class="mt-4 text-lg text-gray-600">ブログでは学びを、ポートフォリオでは実績を公開しています。</p>
         <div class="mt-6 flex flex-wrap gap-3">
             <a href="/blog/"
                 class="inline-block px-5 py-3 bg-primary text-white rounded-md shadow hover:opacity-95">ブログを読む</a>
@@ -37,11 +37,6 @@ layout: home
                 {% endif %}
             </div>
 
-            <div class="bg-white rounded-lg p-4 shadow">
-                <div class="text-sm font-semibold text-gray-700">Featured Project</div>
-                <div class="mt-2 text-gray-600">静的サイトジェネレータを使ったポートフォリオ構築</div>
-                <div class="mt-3 text-xs text-gray-400">React / Tailwind</div>
-            </div>
         </div>
     </div>
 </section>
